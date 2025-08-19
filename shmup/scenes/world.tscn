@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://n2g2njdxela7"]
 
-[ext_resource type="Script" uid="uid://bx3sqdhdi7pm2" path="res://scripts/character_body_2d.gd" id="1_k0juu"]
+[ext_resource type="Script" uid="uid://bx3sqdhdi7pm2" path="res://scripts/player.gd" id="1_k0juu"]
 [ext_resource type="Texture2D" uid="uid://daaolmqcojcn0" path="res://img/portrait_blueeyes.png" id="2_71j4m"]
 [ext_resource type="Texture2D" uid="uid://cu6r5m3lhjf2y" path="res://img/icon.svg" id="3_qfnet"]
 [ext_resource type="Script" uid="uid://cip5dyrh1qm1p" path="res://scripts/test_dummy.gd" id="4_i7141"]
@@ -23,15 +23,15 @@ animations = [{
 
 [node name="shippy" type="Node2D" parent="."]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="shippy"]
+[node name="player" type="CharacterBody2D" parent="shippy"]
 collision_mask = 12
 script = ExtResource("1_k0juu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="shippy/CharacterBody2D"]
+[node name="playerCollider" type="CollisionShape2D" parent="shippy/player"]
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_aqk2v")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="shippy/CharacterBody2D"]
+[node name="playerSprite" type="AnimatedSprite2D" parent="shippy/player"]
 position = Vector2(0, 4.76837e-07)
 scale = Vector2(0.136882, 0.0760456)
 sprite_frames = SubResource("SpriteFrames_036b0")

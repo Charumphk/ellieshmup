@@ -2,6 +2,10 @@ extends Sprite2D
 
 @onready var projectile = load("res://scenes/enemy_projectile.tscn")
 @onready var main = get_tree().get_root().get_node("main")
+
+@export var cooldownShoot1 = .2
+var timeSinceAttack = .0
+
 #shoots projectile in the direction this node is facing
 func shoot():
 	var instance = projectile.instantiate()
@@ -12,9 +16,13 @@ func shoot():
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	shoot()
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if cooldownShoot1 < timeSinceAttack:
+		shoot()
+		timeSinceAttack = 0
+	
+	timeSinceAttack += delta

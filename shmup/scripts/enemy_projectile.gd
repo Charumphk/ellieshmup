@@ -24,3 +24,6 @@ func _physics_process(delta):
 			if obj.type == "player":
 				print("Ouch!")
 				queue_free()
+			if obj.type == "bomb":
+				print("Cleared!")
+				queue_free()
