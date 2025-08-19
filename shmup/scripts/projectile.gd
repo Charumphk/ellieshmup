@@ -10,6 +10,10 @@ func _ready():
 	global_position = spawnPos
 	global_rotation = spawnRot
 	
-func _physics_process(_delta):
+func _physics_process(delta):
 	velocity = Vector2(0, -SPEED).rotated(dir)
-	move_and_slide()
+	
+	var collisionInfo = move_and_collide(velocity * delta)
+	if collisionInfo:
+		var collision_point = collisionInfo.get_position()
+		var obj = collisionInfo.get_collider()

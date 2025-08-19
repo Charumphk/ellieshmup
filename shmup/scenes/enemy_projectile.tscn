@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://8k1pdssps60i"]
+
+[ext_resource type="Script" uid="uid://plnqq4rehlhp" path="res://scripts/enemy_projectile.gd" id="1_vpq67"]
+[ext_resource type="Texture2D" uid="uid://ch4srdh3qpsbl" path="res://img/idler5.png" id="2_ccnu0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sxmqc"]
+radius = 4.0
+height = 20.0
+
+[node name="enemyProjectile" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_vpq67")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.165, 0.165)
+texture = ExtResource("2_ccnu0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_sxmqc")
