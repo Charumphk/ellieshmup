@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://n2g2njdxela7"]
+
+[ext_resource type="Script" uid="uid://bx3sqdhdi7pm2" path="res://character_body_2d.gd" id="1_fj7yv"]
+[ext_resource type="Texture2D" uid="uid://daaolmqcojcn0" path="res://portrait_blueeyes.png" id="2_fj7yv"]
+[ext_resource type="PackedScene" uid="uid://dqh4s4aq5i2cy" path="res://projectile.tscn" id="3_tlwt5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqk2v"]
+size = Vector2(35, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_036b0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fj7yv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="main" type="Node2D"]
+
+[node name="shippy" type="Node2D" parent="."]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="shippy"]
+collision_mask = 12
+script = ExtResource("1_fj7yv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="shippy/CharacterBody2D"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_aqk2v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="shippy/CharacterBody2D"]
+position = Vector2(0, 4.76837e-07)
+scale = Vector2(0.136882, 0.0760456)
+sprite_frames = SubResource("SpriteFrames_036b0")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="projectile" parent="." instance=ExtResource("3_tlwt5")]
+visible = false
