@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://n2g2njdxela7"]
+[gd_scene load_steps=47 format=3 uid="uid://n2g2njdxela7"]
 
 [ext_resource type="Script" uid="uid://btts613mbv20q" path="res://scenes/playertest.gd" id="1_k0juu"]
 [ext_resource type="Texture2D" uid="uid://oktsyxmtsg6q" path="res://img/zuzuspin/frame_00_delay-0.05s.png" id="2_e75v4"]
@@ -41,6 +41,8 @@
 [ext_resource type="Texture2D" uid="uid://c3s3qxnpuahf7" path="res://img/zuzuspin/frame_37_delay-0.05s.png" id="39_1v02h"]
 [ext_resource type="Texture2D" uid="uid://bcibtrj04ievs" path="res://img/zuzuspin/frame_38_delay-0.05s.png" id="40_shehe"]
 [ext_resource type="Texture2D" uid="uid://djc7bmlmbkk2b" path="res://img/focusorb.png" id="41_8u370"]
+[ext_resource type="Script" uid="uid://cs4a4mjab5vxx" path="res://scenes/beamer.gd" id="42_6oujy"]
+[ext_resource type="Texture2D" uid="uid://cs02tci3ush5e" path="res://img/beam.png" id="42_rga7q"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_036b0"]
 animations = [{
@@ -170,6 +172,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_rwgxs"]
 radius = 7.06971
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rga7q"]
+size = Vector2(1500, 20)
+
 [node name="main" type="Node2D"]
 
 [node name="shippy" type="Node2D" parent="."]
@@ -198,4 +203,20 @@ texture = ExtResource("41_8u370")
 [node name="firePoint" type="Marker2D" parent="shippy/player"]
 position = Vector2(19, 0)
 
+[node name="beamArea" type="Area2D" parent="shippy/player"]
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("42_6oujy")
+
+[node name="beam" type="Sprite2D" parent="shippy/player/beamArea"]
+position = Vector2(775, 0)
+texture = ExtResource("42_rga7q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="shippy/player/beamArea"]
+position = Vector2(775, 0)
+shape = SubResource("RectangleShape2D_rga7q")
+
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="body_entered" from="shippy/player/beamArea" to="shippy/player" method="_on_beam_area_body_entered"]
+[connection signal="body_exited" from="shippy/player/beamArea" to="shippy/player" method="_on_beam_area_body_exited"]
