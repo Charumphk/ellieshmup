@@ -7,7 +7,7 @@ extends CharacterBody2D
 #references to other nodes
 @onready var focus_sprite = $focusSprite
 @onready var fire_point = $firePoint
-@onready var beam = $beam
+@onready var beam = $beamArea/beam
 
 #focus
 var focused: bool = false
@@ -17,6 +17,8 @@ var type = "player" #for interaction with world objects
 var beamCharge: float = .0
 
 func _ready():
+	var beam = $beamArea/beam
+	var focus_sprite = $focusSprite
 	focus_sprite.visible = false
 	beam.visible = false
 	pass
