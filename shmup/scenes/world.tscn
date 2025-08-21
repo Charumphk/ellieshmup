@@ -181,7 +181,7 @@ size = Vector2(1500, 20)
 [node name="shippy" type="Node2D" parent="."]
 
 [node name="player" type="CharacterBody2D" parent="shippy"]
-collision_mask = 12
+collision_mask = 28
 script = ExtResource("1_k0juu")
 
 [node name="playerSprite" type="AnimatedSprite2D" parent="shippy/player"]
