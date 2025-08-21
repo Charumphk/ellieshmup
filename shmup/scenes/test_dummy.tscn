@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwyadcodc5wfi"]
+
+[ext_resource type="Texture2D" uid="uid://cu6r5m3lhjf2y" path="res://img/icon.svg" id="1_ms083"]
+[ext_resource type="Script" uid="uid://cip5dyrh1qm1p" path="res://scripts/test_dummy.gd" id="2_734sh"]
+
+[node name="testDummy" type="Sprite2D"]
+rotation = -1.5708
+scale = Vector2(0.164063, 0.15625)
+texture = ExtResource("1_ms083")
+script = ExtResource("2_734sh")
