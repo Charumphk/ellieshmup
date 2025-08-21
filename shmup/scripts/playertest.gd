@@ -3,12 +3,18 @@ extends CharacterBody2D
 #speed
 @export var speed: float = 400.0
 @export var focus_speed: float = 150.0
-@export var scroll_speed: float = 200
+
+
+#style mechanic setup
+enum style_type {grad, miami}
+@onready var style = style_type.miami
+
 #references to other nodes
 @onready var focus_sprite = $focusSprite
 @onready var fire_point = $firePoint
 @onready var beam = $beamArea
 @onready var sprite = $playerSprite
+
 #focus
 var focused: bool = false
 var type = "player" #for interaction with world objects
@@ -23,10 +29,14 @@ func _ready():
 
 func _physics_process(delta:float) -> void:
 	handle_movement(delta)
-	handle_rotation()
+	#swap controls based on game style
+	match style:
+		style_type.miami:
+			handle_rotation()
+			handle_beam(delta)
+		style_type.grad:
+			print("grad")
 	handle_focus_mode()
-	handle_beam(delta)
-	
 	move_and_slide()
 	
 	#increment timers
@@ -40,7 +50,7 @@ func handle_focus_mode():
 func handle_movement(delta):
 	var input_direction = Input.get_vector("left", "right", "up", "down") #get input direction as a vector2
 	var current_speed = focus_speed if focused else speed
-	velocity = Vector2(scroll_speed, 0) + input_direction * current_speed
+	velocity = Vector2(global.scroll_speed, 0) + input_direction * current_speed
 	
 
 func handle_rotation():
@@ -64,6 +74,4 @@ func handle_beam(delta):
 		beam.visible = false
 		beamCharge = 0
 		("Done shooting.")
-		
-
 		
