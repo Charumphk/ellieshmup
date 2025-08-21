@@ -7,21 +7,31 @@ extends CharacterBody2D
 #references to other nodes
 @onready var focus_sprite = $focusSprite
 @onready var fire_point = $firePoint
+@onready var beam = $beam
 
 #focus
 var focused: bool = false
 var type = "player" #for interaction with world objects
 
+#beamshoot
+var beamCharge: float = .0
+
 func _ready():
 	focus_sprite.visible = false
+	beam.visible = false
 	pass
 
 func _physics_process(delta:float) -> void:
 	handle_movement(delta)
 	handle_rotation()
 	handle_focus_mode()
+	handle_beam(delta)
 	
 	move_and_slide()
+	
+	#increment timers
+	
+	
 
 func handle_focus_mode():
 	focused = Input.is_action_pressed("ability")
@@ -38,3 +48,19 @@ func handle_rotation():
 	
 	var direction = mouse_pos - global_position
 	rotation = direction.angle()
+
+func handle_beam(delta):
+	if Input.is_action_pressed("shoot"):
+		if beamCharge < .5:
+			beamCharge += delta
+			print("Charging...")
+		else:
+			beam.visible = true
+			print("Fire!")
+	if Input.is_action_just_released("shoot"):
+		beam.visible = false
+		beamCharge = 0
+		("Done shooting.")
+		
+
+		
