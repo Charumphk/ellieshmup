@@ -6,6 +6,8 @@ extends Sprite2D
 @export var cooldownShoot1 = .2
 var timeSinceAttack = .0
 
+
+
 #shoots projectile in the direction this node is facing
 func shoot():
 	var instance = projectile.instantiate()

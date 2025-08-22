@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0mxsqqfy5me4"]
+
+[ext_resource type="Script" uid="uid://bpyo45m8g6sxe" path="res://scripts/mode_swap.gd" id="1_jkaiq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0j205"]
+size = Vector2(5, 74)
+
+[node name="mode_swap" type="Area2D"]
+script = ExtResource("1_jkaiq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, 0)
+shape = SubResource("RectangleShape2D_0j205")

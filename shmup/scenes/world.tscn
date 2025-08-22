@@ -1,6 +1,6 @@
-[gd_scene load_steps=47 format=3 uid="uid://n2g2njdxela7"]
+[gd_scene load_steps=48 format=3 uid="uid://n2g2njdxela7"]
 
-[ext_resource type="Script" uid="uid://btts613mbv20q" path="res://scenes/playertest.gd" id="1_k0juu"]
+[ext_resource type="Script" uid="uid://btts613mbv20q" path="res://scripts/playertest.gd" id="1_k0juu"]
 [ext_resource type="Texture2D" uid="uid://oktsyxmtsg6q" path="res://img/zuzuspin/frame_00_delay-0.05s.png" id="2_e75v4"]
 [ext_resource type="Texture2D" uid="uid://dv74r6bovxljc" path="res://img/zuzuspin/frame_01_delay-0.05s.png" id="3_8u370"]
 [ext_resource type="Texture2D" uid="uid://md5yh6kwclve" path="res://img/zuzuspin/frame_02_delay-0.05s.png" id="4_rga7q"]
@@ -41,8 +41,9 @@
 [ext_resource type="Texture2D" uid="uid://c3s3qxnpuahf7" path="res://img/zuzuspin/frame_37_delay-0.05s.png" id="39_1v02h"]
 [ext_resource type="Texture2D" uid="uid://bcibtrj04ievs" path="res://img/zuzuspin/frame_38_delay-0.05s.png" id="40_shehe"]
 [ext_resource type="Texture2D" uid="uid://djc7bmlmbkk2b" path="res://img/focusorb.png" id="41_8u370"]
-[ext_resource type="Script" uid="uid://cs4a4mjab5vxx" path="res://scenes/beamer.gd" id="42_6oujy"]
+[ext_resource type="Script" uid="uid://cs4a4mjab5vxx" path="res://scripts/beamer.gd" id="42_6oujy"]
 [ext_resource type="Texture2D" uid="uid://cs02tci3ush5e" path="res://img/beam.png" id="42_rga7q"]
+[ext_resource type="PackedScene" uid="uid://nluyq0fqcw01" path="res://scenes/enemy_basic.tscn" id="44_hi6a0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_036b0"]
 animations = [{
@@ -180,7 +181,7 @@ size = Vector2(1500, 20)
 [node name="shippy" type="Node2D" parent="."]
 
 [node name="player" type="CharacterBody2D" parent="shippy"]
-collision_mask = 12
+collision_mask = 28
 script = ExtResource("1_k0juu")
 
 [node name="playerSprite" type="AnimatedSprite2D" parent="shippy/player"]
@@ -217,6 +218,9 @@ position = Vector2(775, 0)
 shape = SubResource("RectangleShape2D_rga7q")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="enemyBasic" parent="." instance=ExtResource("44_hi6a0")]
+position = Vector2(491, -2)
 
 [connection signal="body_entered" from="shippy/player/beamArea" to="shippy/player" method="_on_beam_area_body_entered"]
 [connection signal="body_exited" from="shippy/player/beamArea" to="shippy/player" method="_on_beam_area_body_exited"]

@@ -1,19 +1,13 @@
-extends CharacterBody2D
+extends Area2D
 
-@export var SPEED = 100
+@export var speed = 800
+@export var lifetime = 2.0
 
-var dir : float
-var spawnPos : Vector2
-var spawnRot : float
+var velocity: Vector2
 
 func _ready():
-	global_position = spawnPos
-	global_rotation = spawnRot
-	
-func _physics_process(delta):
-	velocity = Vector2(0, -SPEED).rotated(dir)
-	
-	var collisionInfo = move_and_collide(velocity * delta)
-	if collisionInfo:
-		var collision_point = collisionInfo.get_position()
-		var obj = collisionInfo.get_collider()
+	await get_tree().create_timer(lifetime).timeout
+	queue_free()
+
+func _process(delta):
+	position += velocity * delta

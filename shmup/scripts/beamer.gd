@@ -1,5 +1,7 @@
 extends Area2D
 
+@onready var sprite = $beam
+
 var bodies_inside = []
 
 # Called when the node enters the scene tree for the first time.
@@ -17,6 +19,7 @@ func _on_body_exited(body):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	for body in bodies_inside:
-		if body.type == "enemy":
-			if body.has_method("take_damage") and body.iframes == .0:
-				body.take_damage(10)
+		if sprite.visible:
+			if body.type == "enemy":
+				if body.has_method("take_damage") and body.iframes == .0:
+					body.take_damage(10)

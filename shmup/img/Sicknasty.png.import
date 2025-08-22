@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcakxqgaon35k"
-path="res://.godot/imported/world_tileset.png-373d0f5b585ff9eb8a8709a68928b10e.ctex"
+uid="uid://cphewg4373r7p"
+path="res://.godot/imported/Sicknasty.png-61dc613d47630cbe9ec86daefe9d598d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/world_tileset.png"
-dest_files=["res://.godot/imported/world_tileset.png-373d0f5b585ff9eb8a8709a68928b10e.ctex"]
+source_file="res://img/Sicknasty.png"
+dest_files=["res://.godot/imported/Sicknasty.png-61dc613d47630cbe9ec86daefe9d598d.ctex"]
 
 [params]
 
