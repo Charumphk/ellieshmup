@@ -11,13 +11,16 @@ var shot_timer: float = 0.2
 enum style_type {grad, miami}
 @onready var style = style_type.grad
 
+#input block during cutscenes
+var input_blocked: bool = false
+
 #references to other nodes
 @onready var focus_sprite = $focusSprite
 @onready var fire_point = $firePoint
 @onready var beam = $beamArea
 @onready var bullet_scene: PackedScene = preload("res://scenes/projectile.tscn")
 @onready var sprite = $playerSprite
-
+@onready var dialogue_system = get_tree().get_first_node_in_group("dialogue")
 #focus
 var focused: bool = false
 var type = "player" #for interaction with world objects
@@ -31,16 +34,24 @@ func _ready():
 	pass
 
 func _physics_process(delta:float) -> void:
-	handle_movement(delta)
-	#swap controls based on game style
-	match style:
-		style_type.miami:
-			handle_rotation()
-			handle_beam(delta)
-		style_type.grad:
-			handle_shots(delta)
-	handle_focus_mode()
-	move_and_slide()
+	#disallow movement if dialogue is running
+	if dialogue_system and dialogue_system.is_dialogue_active:
+		input_blocked = true
+		return
+	else:
+		if input_blocked:
+			input_blocked = false
+			return
+		handle_movement(delta)
+		#swap controls based on game style
+		match style:
+			style_type.miami:
+				handle_rotation()
+				handle_beam(delta)
+			style_type.grad:
+				handle_shots(delta)
+		handle_focus_mode()
+		move_and_slide()
 	
 	#increment timers
 	
@@ -80,7 +91,7 @@ func handle_beam(delta):
 		
 func handle_shots(delta):
 	shot_timer -= delta
-	if Input.is_action_pressed("shoot") and shot_timer <= 0.0:
+	if Input.is_action_pressed("shoot") and shot_timer <= 0.0 and input_blocked == false:
 		shoot_bullet()
 		shot_timer = fire_rate
 		

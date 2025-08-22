@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bshrxnv025hga"]
+
+[ext_resource type="Script" uid="uid://ts45uisyy118" path="res://scripts/ambush_swap.gd" id="1_8vkue"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n080m"]
+
+[node name="ambush_swap" type="Area2D"]
+script = ExtResource("1_8vkue")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_n080m")

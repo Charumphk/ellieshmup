@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0483pskvr1g0"]
+
+[ext_resource type="Script" uid="uid://mivu1ad2all8" path="res://scripts/enemy_trigger_hover.gd" id="1_y5u6r"]
+
+[node name="enemy_trigger_hover" type="Marker2D"]
+script = ExtResource("1_y5u6r")
