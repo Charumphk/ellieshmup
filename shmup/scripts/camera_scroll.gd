@@ -1,4 +1,5 @@
 extends Camera2D
 
-func _process(delta):
+# Camera scroll script
+func _process(delta: float) -> void:
 	position.x += global.scroll_speed * delta

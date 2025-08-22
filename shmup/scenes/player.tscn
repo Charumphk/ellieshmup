@@ -175,7 +175,7 @@ radius = 7.06971
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rga7q"]
 size = Vector2(1500, 20)
 
-[node name="player" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 12
 script = ExtResource("1_3iwfv")
 

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c85d3l74pvfvi"]
+
+[ext_resource type="Script" uid="uid://c0fa7ouyuhco6" path="res://scripts/camera_trigger.gd" id="1_wfucr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a2m0s"]
+
+[node name="CameraTrigger" type="CharacterBody2D"]
+script = ExtResource("1_wfucr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_a2m0s")
