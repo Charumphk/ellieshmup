@@ -176,5 +176,5 @@ tile_map_data = PackedByteArray("AAD//wQAAQABAAEAAAAAAAQAAQABAAEAAAABAAQAAQABAAE
 tile_set = SubResource("TileSet_ywoxc")
 
 [node name="mode_swap" parent="." instance=ExtResource("4_a7mf4")]
-position = Vector2(500, 0)
+position = Vector2(3648, 0)
 new_mode = 1
