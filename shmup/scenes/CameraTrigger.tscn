@@ -4,7 +4,7 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a2m0s"]
 
-[node name="CameraTrigger" type="Area2D"]
+[node name="CameraTrigger" type="CharacterBody2D"]
 script = ExtResource("1_wfucr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

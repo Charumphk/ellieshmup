@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var player = $"../player"
+@onready var player = get_tree().get_first_node_in_group("player")
 @onready var projectile = load("res://scenes/enemy_projectile.tscn")
 
 @export var rotSpeed = 10.0
