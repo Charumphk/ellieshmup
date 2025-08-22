@@ -4,6 +4,9 @@ extends CharacterBody2D
 @export var speed: float = 400.0
 @export var focus_speed: float = 150.0
 
+#health info
+@export var max_health: float = 100
+
 #bullet shoot fast speed go?
 @export var fire_rate: float = 0.2
 var shot_timer: float = 0.2
@@ -13,6 +16,8 @@ enum style_type {grad, miami}
 
 #input block during cutscenes
 var input_blocked: bool = false
+
+var iframes: float = 0.0
 
 #references to other nodes
 @onready var focus_sprite = $focusSprite
@@ -25,12 +30,14 @@ var input_blocked: bool = false
 var focused: bool = false
 var type = "player" #for interaction with world objects
 
+
 #beamshoot
 var beamCharge: float = .0
 
 func _ready():
 	focus_sprite.visible = false
 	beam.visible = false
+	global.health = max_health
 	pass
 
 func _physics_process(delta:float) -> void:
@@ -51,6 +58,7 @@ func _physics_process(delta:float) -> void:
 			style_type.grad:
 				handle_shots(delta)
 		handle_focus_mode()
+		handle_iframes()
 		move_and_slide()
 	
 	#increment timers
@@ -100,3 +108,20 @@ func shoot_bullet():
 	get_parent().add_child(bullet)
 	bullet.global_position = fire_point.global_position
 	bullet.velocity = Vector2(1, 0) * bullet.speed
+	
+func handle_iframes():
+	pass #add flickering visuals later
+	
+
+func take_damage(num):
+	if iframes == 0:
+		global.health -= num
+		if global.health <= 0:
+			print("YOU DIED!")
+			#switch to "you died" scene
+			call_deferred("change_to_death_scene")
+			
+func change_to_death_scene():
+	var error = get_tree().change_scene_to_file("res://death_screen.tscn")
+	if error != OK:
+		print("Failed to change scene, error: ", error)

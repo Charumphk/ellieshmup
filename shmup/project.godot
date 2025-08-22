@@ -19,11 +19,6 @@ config/icon="res://img/icon.svg"
 
 global="*res://scripts/global.gd"
 
-[global_group]
-
-enemy_spawn=""
-dialogue=""
-
 [input]
 
 up={
