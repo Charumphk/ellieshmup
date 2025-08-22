@@ -2,13 +2,14 @@ extends CharacterBody2D
 
 @onready var player = $"../player"
 @onready var projectile = load("res://scenes/enemy_projectile.tscn")
-@onready var main = get_tree().get_root().get_node("Stage")
 
 @export var rotSpeed = 5.0
-@export var speed = 220.0
+@export var speed = 250.0
 @export var range = 800.0
 @export var attackCooldown = 2.0
 @export var health = 60.0
+
+var spawn_pos : Vector2 
 
 var type = "enemy"
 
@@ -18,6 +19,9 @@ var iframes = .0
 var playerPos 
 var distanceToPlayer
 
+func _ready():
+	position = spawn_pos
+
 
 func shoot(dir, angle):
 	var instance = projectile.instantiate()
@@ -25,7 +29,7 @@ func shoot(dir, angle):
 	instance.dir = final_angle
 	instance.spawnPos = global_position
 	instance.spawnRot = final_angle
-	main.add_child.call_deferred(instance)
+	get_parent().add_child.call_deferred(instance)
 
 func take_damage(dmg):
 	print("dmg")
