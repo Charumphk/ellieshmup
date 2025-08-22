@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c85d3l74pvfvi" path="res://scenes/CameraTrigger.tscn" id="2_a7mf4"]
 [ext_resource type="PackedScene" uid="uid://b0mxsqqfy5me4" path="res://scenes/mode_swap.tscn" id="4_a7mf4"]
 [ext_resource type="Texture2D" uid="uid://qmmf6ilqifj1" path="res://img/tiles/world_tileset.png" id="4_e0kik"]
-[ext_resource type="PackedScene" uid="uid://c2ussqcgnelqj" path="res://enemy_trigger_basic.tscn" id="6_ywoxc"]
+[ext_resource type="PackedScene" uid="uid://b0483pskvr1g0" path="res://scenes/enemy_trigger_hover.tscn" id="6_ywoxc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a7mf4"]
 texture = ExtResource("4_e0kik")
@@ -167,6 +167,8 @@ texture_filter = 1
 script = ExtResource("1_ieuev")
 
 [node name="CameraTrigger" parent="." instance=ExtResource("2_a7mf4")]
+collision_layer = 0
+collision_mask = 0
 
 [node name="player" parent="." instance=ExtResource("1_b1dnq")]
 collision_mask = 28
@@ -180,5 +182,5 @@ tile_set = SubResource("TileSet_ywoxc")
 position = Vector2(3648, 0)
 new_mode = 1
 
-[node name="enemy_trigger_basic" parent="." instance=ExtResource("6_ywoxc")]
-position = Vector2(1161, -235)
+[node name="enemy_trigger_hover" parent="." instance=ExtResource("6_ywoxc")]
+position = Vector2(1166, -230)
