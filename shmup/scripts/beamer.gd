@@ -22,4 +22,4 @@ func _process(delta: float) -> void:
 		if sprite.visible:
 			if body.type == "enemy":
 				if body.has_method("take_damage") and body.iframes == .0:
-					body.take_damage(10)
+					body.take_damage(10, "continuous")

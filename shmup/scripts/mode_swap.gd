@@ -11,11 +11,11 @@ var start: Vector2
 
 func _ready():
 	collision_layer = 7
-	body_entered.connect(_on_body_entered)
+	area_entered.connect(_on_area_entered)
 	center = global_position
 	
 
-func _on_body_entered(body):
+func _on_area_entered(body):
 	if body.name == "CameraTrigger" or body.is_in_group("camera_trigger") and not swapping: #checks body
 		swapping = true
 		start = body.global_position
@@ -24,7 +24,6 @@ func _on_body_entered(body):
 		global.scroll_speed = 0
 		
 func _process(delta: float) -> void:
-	print(global.scroll_speed)
 	if swapping:
 		swap_timer += delta
 		var progress = swap_timer / slow_time

@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Area2D
 
 @onready var camera = get_parent().get_node("Camera2D")
 

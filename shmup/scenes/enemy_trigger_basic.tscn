@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c2ussqcgnelqj"]
 
-[ext_resource type="Script" uid="uid://cd47tpjirrqjn" path="res://enemy_trigger_basic.gd" id="1_thwhl"]
+[ext_resource type="Script" uid="uid://cd47tpjirrqjn" path="res://scripts/enemy_trigger_basic.gd" id="1_thwhl"]
 
 [node name="enemy_trigger_basic" type="Marker2D"]
 script = ExtResource("1_thwhl")
