@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bshrxnv025hga" path="res://scenes/ambush_swap.tscn" id="5_ywoxc"]
 [ext_resource type="PackedScene" uid="uid://b0483pskvr1g0" path="res://scenes/enemy_trigger_hover.tscn" id="6_ywoxc"]
 [ext_resource type="PackedScene" uid="uid://bpkxsgyifwqbf" path="res://scenes/dialogue_trigger.tscn" id="7_gldam"]
-[ext_resource type="PackedScene" uid="uid://ph3p8obfj23b" path="res://scenes/dialogue_system.tscn" id="8_q8fwf"]
+[ext_resource type="AudioStream" uid="uid://donvbpks5cd5t" path="res://audio/ost/FULL METAL DAEMON MURAMASA OST - 13_ Katsu-nin-to.mp3" id="9_l3mx8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a7mf4"]
 texture = ExtResource("4_e0kik")
@@ -167,20 +167,6 @@ texture_filter = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="UI" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="DialogueSystem" parent="CanvasLayer/UI" groups=["dialogue"] instance=ExtResource("8_q8fwf")]
-layout_mode = 1
-offset_left = -4.0
-offset_top = -32.0
-offset_right = 1108.0
-offset_bottom = 456.0
-grow_vertical = 0
-
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("1_ieuev")
 
@@ -211,3 +197,6 @@ position = Vector2(1166, -230)
 
 [node name="dialogue_trigger" parent="." instance=ExtResource("7_gldam")]
 position = Vector2(128, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_l3mx8")
