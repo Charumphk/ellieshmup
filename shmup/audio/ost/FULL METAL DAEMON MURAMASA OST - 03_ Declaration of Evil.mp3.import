@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://tnpgdk0eeyo8"
+path="res://.godot/imported/FULL METAL DAEMON MURAMASA OST - 03_ Declaration of Evil.mp3-8978fb6a43c4917effb1d40e4346eb80.mp3str"
+
+[deps]
+
+source_file="res://audio/ost/FULL METAL DAEMON MURAMASA OST - 03_ Declaration of Evil.mp3"
+dest_files=["res://.godot/imported/FULL METAL DAEMON MURAMASA OST - 03_ Declaration of Evil.mp3-8978fb6a43c4917effb1d40e4346eb80.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

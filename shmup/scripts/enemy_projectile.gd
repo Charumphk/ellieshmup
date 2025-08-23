@@ -1,10 +1,13 @@
 extends Area2D
-@export var SPEED = 400
+@export var SPEED = 400.0
+@export var strength = 10.0
 #for player collision:
 var type = "eProj"
 var dir : float
 var spawnPos : Vector2
 var spawnRot : float
+
+
 
 func _ready():
 	global_position = spawnPos
@@ -31,7 +34,8 @@ func _on_area_entered(area):
 
 func handle_collision(obj):
 	if obj.type == "player":
-		print("Ouch!")
+		obj.take_damage(strength)
+		print("took damage:" + str(strength))
 		queue_free()
 	if obj.type == "bomb":
 		print("Cleared!")

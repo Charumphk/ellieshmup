@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://donvbpks5cd5t"
+path="res://.godot/imported/FULL METAL DAEMON MURAMASA OST - 13_ Katsu-nin-to.mp3-d658159a351f1315aef71b4ba5ccedd9.mp3str"
+
+[deps]
+
+source_file="res://audio/ost/FULL METAL DAEMON MURAMASA OST - 13_ Katsu-nin-to.mp3"
+dest_files=["res://.godot/imported/FULL METAL DAEMON MURAMASA OST - 13_ Katsu-nin-to.mp3-d658159a351f1315aef71b4ba5ccedd9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
