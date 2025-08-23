@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="DialogicStyle" load_steps=6 format=3 uid="uid://csq70bu6v7yia"]
+
+[ext_resource type="Script" uid="uid://sypiabjfrjb4" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="1_b0o4w"]
+[ext_resource type="Script" uid="uid://sdp3773wsej2" path="res://addons/dialogic/Resources/dialogic_style.gd" id="2_aoslv"]
+[ext_resource type="PackedScene" uid="uid://bvw8fn2qftrft" path="res://dialog/styles/shmup_style.tscn" id="2_ol6bi"]
+
+[sub_resource type="Resource" id="Resource_ol6bi"]
+script = ExtResource("1_b0o4w")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_uqsp2"]
+script = ExtResource("1_b0o4w")
+scene = ExtResource("2_ol6bi")
+overrides = {
+"main_panel_position": "Vector2(0, -260)"
+}
+
+[resource]
+script = ExtResource("2_aoslv")
+name = "shmupscene"
+layer_list = Array[String](["10"])
+layer_info = {
+"": SubResource("Resource_ol6bi"),
+"10": SubResource("Resource_uqsp2")
+}
+base_overrides = {}
+layers = Array[ExtResource("1_b0o4w")]([])
+metadata/_latest_layer = "10"
