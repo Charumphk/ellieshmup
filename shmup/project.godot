@@ -28,8 +28,8 @@ directories/dch_directory={
 directories/dtl_directory={
 "test1": "res://dialog/timelines/test1.dtl"
 }
-layout/style_list=[]
-layout/default_style="res://dialog/styles/shmupstyle.tres"
+layout/style_list=["res://dialog/styles/shmupscene.tres"]
+layout/default_style="res://dialog/styles/shmupscene.tres"
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.01
 text/initial_text_reveal_skippable=true
@@ -51,10 +51,16 @@ save/autosave_delay=60.0
 save/encryption_on_exports_only=true
 text/autopauses={}
 glossary/default_case_sensitive=true
+variables={}
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
+
+[global_group]
+
+enemy_spawn=""
+dialogue=""
 
 [input]
 

@@ -16,7 +16,7 @@ enum style_type {grad, miami}
 
 #input block during cutscenes
 var input_blocked: bool = false
-
+var dialogue: bool = false
 var iframes: float = 0.0
 
 #references to other nodes
@@ -25,7 +25,6 @@ var iframes: float = 0.0
 @onready var beam = $beamArea
 @onready var bullet_scene: PackedScene = preload("res://scenes/projectile.tscn")
 @onready var sprite = $playerSprite
-@onready var dialogue_system = get_tree().get_first_node_in_group("dialogue")
 #focus
 var focused: bool = false
 var type = "player" #for interaction with world objects
@@ -42,7 +41,7 @@ func _ready():
 
 func _physics_process(delta:float) -> void:
 	#disallow movement if dialogue is running
-	if dialogue_system and dialogue_system.is_dialogue_active:
+	if dialogue == true:
 		input_blocked = true
 		return
 	else:
@@ -99,7 +98,7 @@ func handle_beam(delta):
 		
 func handle_shots(delta):
 	shot_timer -= delta
-	if Input.is_action_pressed("shoot") and shot_timer <= 0.0 and input_blocked == false:
+	if Input.is_action_pressed("shoot") and shot_timer <= 0.0:
 		shoot_bullet()
 		shot_timer = fire_rate
 		

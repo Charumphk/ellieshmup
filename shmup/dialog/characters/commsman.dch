@@ -6,7 +6,7 @@
 &"custom_info": {
 "sound_mood_default": "",
 "sound_moods": {},
-"style": ""
+"style": "shmupstyle"
 },
 &"default_portrait": "claracodec",
 &"description": "Your helpful assistant. Works from the station and keeps an eye on you.",

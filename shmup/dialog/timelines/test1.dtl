@@ -3,4 +3,5 @@ join commsman leftmost
 commsman: ZZ Cube pilot, are you there?
 commsman: Watch out. There's some enemies up ahead.\
 I believe in you!
+[signal arg="end"]
 [end_timeline]

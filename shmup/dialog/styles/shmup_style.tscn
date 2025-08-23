@@ -1,0 +1,91 @@
+[gd_scene load_steps=7 format=3 uid="uid://bvw8fn2qftrft"]
+
+[ext_resource type="Script" uid="uid://ds7cesooeet5v" path="res://dialog/styles/ThreeBoxDialogueLayer.gd" id="1_o4ivk"]
+[ext_resource type="Script" uid="uid://dp4hwyn1cs0ug" path="res://addons/dialogic/Modules/Text/node_name_label.gd" id="2_mcr2t"]
+[ext_resource type="Script" uid="uid://2edkc8x6s231" path="res://addons/dialogic/Modules/Text/node_dialog_text.gd" id="3_frrom"]
+[ext_resource type="Script" uid="uid://bera5lqnsi77u" path="res://addons/dialogic/Modules/Text/node_type_sound.gd" id="4_jla3q"]
+[ext_resource type="Script" uid="uid://d1b0etkacpema" path="res://addons/dialogic/Modules/Character/node_portrait_container.gd" id="5_skydi"]
+[ext_resource type="Script" uid="uid://c2g155dk750iu" path="res://addons/dialogic/Modules/Text/node_next_indicator.gd" id="6_gldx0"]
+
+[node name="ShmupStyle" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o4ivk")
+
+[node name="MainPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="LeftSection" type="MarginContainer" parent="MainPanel/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+
+[node name="CharaHolder" type="VBoxContainer" parent="MainPanel/HBoxContainer/LeftSection"]
+layout_mode = 2
+
+[node name="PortraitPanel" type="PanelContainer" parent="MainPanel/HBoxContainer/LeftSection/CharaHolder"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DialogicNode_PortraitContainer" type="Control" parent="MainPanel/HBoxContainer/LeftSection/CharaHolder/PortraitPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("5_skydi")
+container_ids = PackedStringArray("1")
+metadata/_custom_type_script = "uid://d1b0etkacpema"
+
+[node name="NamePanel" type="PanelContainer" parent="MainPanel/HBoxContainer/LeftSection/CharaHolder"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="DialogicNode_NameLabel" type="Label" parent="MainPanel/HBoxContainer/LeftSection/CharaHolder/NamePanel"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("2_mcr2t")
+metadata/_custom_type_script = "uid://dp4hwyn1cs0ug"
+
+[node name="Spacer" type="Control" parent="MainPanel/HBoxContainer/LeftSection/CharaHolder"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RightSection" type="VBoxContainer" parent="MainPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextPanel" type="PanelContainer" parent="MainPanel/HBoxContainer/RightSection"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DialogText" type="RichTextLabel" parent="MainPanel/HBoxContainer/RightSection/TextPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("3_frrom")
+metadata/_custom_type_script = "uid://2edkc8x6s231"
+
+[node name="DialogicNode_TypeSounds" type="AudioStreamPlayer" parent="MainPanel/HBoxContainer/RightSection/TextPanel/DialogText"]
+unique_name_in_owner = true
+script = ExtResource("4_jla3q")
+metadata/_custom_type_script = "uid://bera5lqnsi77u"
+
+[node name="DialogicNode_NextIndicator" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("6_gldx0")
+metadata/_custom_type_script = "uid://c2g155dk750iu"
