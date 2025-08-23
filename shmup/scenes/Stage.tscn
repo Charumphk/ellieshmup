@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=4 uid="uid://d0giwf0c7slpt"]
+[gd_scene load_steps=12 format=4 uid="uid://d0giwf0c7slpt"]
 
 [ext_resource type="PackedScene" uid="uid://chrmy1227bsr7" path="res://scenes/player.tscn" id="1_b1dnq"]
 [ext_resource type="Script" uid="uid://66pc3jx5hflu" path="res://scripts/camera_scroll.gd" id="1_ieuev"]
 [ext_resource type="PackedScene" uid="uid://c85d3l74pvfvi" path="res://scenes/CameraTrigger.tscn" id="2_a7mf4"]
+[ext_resource type="PackedScene" uid="uid://dmghjom0jrhnv" path="res://scenes/health_display.tscn" id="2_l3mx8"]
 [ext_resource type="Texture2D" uid="uid://qmmf6ilqifj1" path="res://img/tiles/world_tileset.png" id="4_e0kik"]
 [ext_resource type="PackedScene" uid="uid://bshrxnv025hga" path="res://scenes/ambush_swap.tscn" id="5_ywoxc"]
 [ext_resource type="PackedScene" uid="uid://b0483pskvr1g0" path="res://scenes/enemy_trigger_hover.tscn" id="6_ywoxc"]
