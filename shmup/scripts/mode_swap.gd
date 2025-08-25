@@ -33,7 +33,7 @@ func _process(delta: float) -> void:
 			if camera:
 				camera.global_position = center
 				
-			global.scroll_speed = 0 if new_mode == 1 else 200
+			global.scroll_speed = 0 if new_mode == 1 else 300
 			swap_mode()
 			swapping = false
 		else:

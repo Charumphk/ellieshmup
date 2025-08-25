@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvw8fn2qftrft"]
+[gd_scene load_steps=11 format=3 uid="uid://bvw8fn2qftrft"]
 
 [ext_resource type="Script" uid="uid://ds7cesooeet5v" path="res://dialog/styles/ThreeBoxDialogueLayer.gd" id="1_o4ivk"]
 [ext_resource type="Script" uid="uid://dp4hwyn1cs0ug" path="res://addons/dialogic/Modules/Text/node_name_label.gd" id="2_mcr2t"]
@@ -6,6 +6,43 @@
 [ext_resource type="Script" uid="uid://bera5lqnsi77u" path="res://addons/dialogic/Modules/Text/node_type_sound.gd" id="4_jla3q"]
 [ext_resource type="Script" uid="uid://d1b0etkacpema" path="res://addons/dialogic/Modules/Character/node_portrait_container.gd" id="5_skydi"]
 [ext_resource type="Script" uid="uid://c2g155dk750iu" path="res://addons/dialogic/Modules/Text/node_next_indicator.gd" id="6_gldx0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mcr2t"]
+bg_color = Color(0.1, 0.1, 0.1, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_frrom"]
+bg_color = Color(0.15, 0.15, 0.15, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jla3q"]
+bg_color = Color(0.2, 0.2, 0.8, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_skydi"]
+content_margin_left = 15.0
+content_margin_top = 10.0
+content_margin_right = 15.0
+content_margin_bottom = 10.0
+bg_color = Color(0.05, 0.05, 0.05, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="ShmupStyle" type="Control"]
 layout_mode = 3
@@ -18,9 +55,17 @@ script = ExtResource("1_o4ivk")
 
 [node name="MainPanel" type="PanelContainer" parent="."]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(900, 220)
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -450.0
+offset_top = -240.0
+offset_right = 450.0
+offset_bottom = -20.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_mcr2t")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainPanel"]
 layout_mode = 2
@@ -38,8 +83,10 @@ layout_mode = 2
 
 [node name="PortraitPanel" type="PanelContainer" parent="MainPanel/HBoxContainer/LeftSection/CharaHolder"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(180, 160)
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_frrom")
 
 [node name="DialogicNode_PortraitContainer" type="Control" parent="MainPanel/HBoxContainer/LeftSection/CharaHolder/PortraitPanel"]
 unique_name_in_owner = true
@@ -50,11 +97,17 @@ metadata/_custom_type_script = "uid://d1b0etkacpema"
 
 [node name="NamePanel" type="PanelContainer" parent="MainPanel/HBoxContainer/LeftSection/CharaHolder"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(180, 35)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jla3q")
 
 [node name="DialogicNode_NameLabel" type="Label" parent="MainPanel/HBoxContainer/LeftSection/CharaHolder/NamePanel"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
 script = ExtResource("2_mcr2t")
 metadata/_custom_type_script = "uid://dp4hwyn1cs0ug"
 
@@ -70,10 +123,13 @@ size_flags_horizontal = 3
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_skydi")
 
 [node name="DialogText" type="RichTextLabel" parent="MainPanel/HBoxContainer/RightSection/TextPanel"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 18
 script = ExtResource("3_frrom")
 metadata/_custom_type_script = "uid://2edkc8x6s231"
 
