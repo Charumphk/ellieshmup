@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export var speed = 220.0
 @export var range = 800.0
 @export var attackCooldown = 1.3
-@export var health = 60.0
+@export var health = 40.0
 
 var spawn_pos : Vector2 
 

@@ -6,3 +6,6 @@ extends Node
 
 #player health
 @export var health = 100
+
+#
+var cam_dir = Vector2.ZERO

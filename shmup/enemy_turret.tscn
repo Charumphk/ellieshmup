@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://ci4n86rslnav1"]
+
+[ext_resource type="Script" uid="uid://cn1ugay6s8d6a" path="res://enemy_turret.gd" id="1_8xuf3"]
+[ext_resource type="Texture2D" uid="uid://b2suxvf8kwx7l" path="res://img/turretMiku.png" id="2_pkgnr"]
+[ext_resource type="Texture2D" uid="uid://gsoprbdq21si" path="res://img/mikuBarrel.jpg" id="3_8tp66"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c5jia"]
+
+[node name="enemy_turret" type="Area2D"]
+script = ExtResource("1_8xuf3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_pkgnr")
+
+[node name="turret_barrel" type="Node2D" parent="."]
+
+[node name="RayCast2D" type="RayCast2D" parent="turret_barrel"]
+target_position = Vector2(-150, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="turret_barrel"]
+position = Vector2(-7, 0)
+rotation = -1.5708
+scale = Vector2(0.00631679, 0.029116)
+texture = ExtResource("3_8tp66")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_c5jia")
