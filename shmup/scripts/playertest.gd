@@ -55,6 +55,7 @@ func _physics_process(delta:float) -> void:
 				handle_rotation()
 				handle_beam(delta)
 			style_type.grad:
+				beam.visible = false
 				handle_shots(delta)
 		handle_focus_mode()
 		handle_iframes()
@@ -71,7 +72,7 @@ func handle_focus_mode():
 func handle_movement(delta):
 	var input_direction = Input.get_vector("left", "right", "up", "down") #get input direction as a vector2
 	var current_speed = focus_speed if focused else speed
-	velocity = Vector2(global.scroll_speed, 0) + input_direction * current_speed
+	velocity = Vector2(global.scroll_speed, global.scroll_speed_y) + input_direction * current_speed
 	
 
 func handle_rotation():
@@ -84,6 +85,16 @@ func handle_rotation():
 		sprite.flip_v = true
 	else:
 		sprite.flip_v = false
+#rotate to new direction after miami section
+func rotate_grad(angle: float, duration: float = 1.0):
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_CUBIC)
+	
+	# calculate the shortest angle difference
+	var target_angle = lerp_angle(rotation, angle, 1.0)
+	
+	tween.tween_property(self, "rotation", target_angle, duration)
 
 func handle_beam(delta):
 	if Input.is_action_pressed("shoot"):
@@ -106,7 +117,8 @@ func shoot_bullet():
 	var bullet = bullet_scene.instantiate()
 	get_parent().add_child(bullet)
 	bullet.global_position = fire_point.global_position
-	bullet.velocity = Vector2(1, 0) * bullet.speed
+	bullet.velocity = transform.x * bullet.speed
+	bullet.rotation = rotation
 	
 func handle_iframes():
 	pass #add flickering visuals later

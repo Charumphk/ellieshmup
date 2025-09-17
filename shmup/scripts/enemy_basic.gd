@@ -11,8 +11,6 @@ extends CharacterBody2D
 
 var spawn_pos : Vector2 
 
-var type = "enemy"
-
 var cooldown = .0
 var iframes = .0
 
@@ -21,6 +19,7 @@ var distanceToPlayer
 
 func _ready():
 	position = spawn_pos
+	add_to_group("enemies")
 
 
 func shoot(dir, angle):

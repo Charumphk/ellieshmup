@@ -6,6 +6,8 @@ extends Area2D
 @export var ambush_delay: float = 1.5
 @export var post_dir: String = "null"
 @export var post_spd : float = 300.0
+@export var dialogue: String = "null"
+@export var onstart = true
 var original_speed: float
 var swapping = false
 var center: Vector2
@@ -19,7 +21,12 @@ func _ready():
 	
 	find_spawn_markers(self)
 	print(spawn_markers)
-	
+	if onstart == false:
+		monitoring = false
+
+func activate_ambush():
+	monitoring = true
+
 func find_spawn_markers(node: Node):
 	for child in node.get_children():
 		if child is Marker2D and child.is_in_group("enemy_spawn"):
@@ -88,24 +95,35 @@ func spawn_enemies():
 		enemy.spawn_pos = marker.global_position
 		enemy.global_position = marker.global_position
 		get_tree().current_scene.add_child(enemy)
-		enemy.add_to_group("current_wave_enemies")
 		print("Enemy spawned. Current children count: ", get_tree().current_scene.get_child_count())
 	check_enemies_defeated()
 
 func check_enemies_defeated():
-	while get_tree().get_nodes_in_group("current_wave_enemies").size() > 0:
+	while get_tree().get_nodes_in_group("enemies").size() > 0:
 		await get_tree().process_frame
 	post_fight()
 
 func post_fight():
 	var dir := Vector2.ZERO
-	#slider
+	#slider assigner
 	match post_dir:
 		"right": dir = Vector2(1, 0)
 		"left":  dir = Vector2(-1, 0)
 		"up":    dir = Vector2(0, -1)
 		"down":  dir = Vector2(0, 1)
+	#swap back
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		player.style = 0
+		print ("Swapped to ", player.style)
+		match post_dir:
+			"right": player.rotate_grad(0)
+			"left":  player.rotate_grad(PI)
+			"up":    player.rotate_grad(deg_to_rad(-90))
+			"down":  player.rotate_grad(deg_to_rad(90))
+		print ("Rotation = ", player.rotation)
 	
+	#slide camera
 	if dir != Vector2.ZERO:
 		var camera = get_tree().get_first_node_in_group("camera")
 		if camera:
