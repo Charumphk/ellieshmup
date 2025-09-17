@@ -13,7 +13,6 @@ var smoothing = 5.0
 var spawn_pos : Vector2 
 var targeting : bool = false
 
-var type = "enemy"
 
 var cooldown = .0
 var iframes = .0
@@ -26,6 +25,7 @@ var distance_horiz
 func _ready():
 	position = spawn_pos
 	rotation = deg_to_rad(-90)
+	add_to_group("enemies")
 
 func shoot(dir, angle):
 	var instance = projectile.instantiate()

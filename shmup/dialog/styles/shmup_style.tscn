@@ -83,6 +83,7 @@ layout_mode = 2
 
 [node name="PortraitPanel" type="PanelContainer" parent="MainPanel/HBoxContainer/LeftSection/CharaHolder"]
 unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(180, 160)
 layout_mode = 2
 size_flags_vertical = 3
@@ -97,6 +98,7 @@ metadata/_custom_type_script = "uid://d1b0etkacpema"
 
 [node name="NamePanel" type="PanelContainer" parent="MainPanel/HBoxContainer/LeftSection/CharaHolder"]
 unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(180, 35)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jla3q")
@@ -121,6 +123,7 @@ size_flags_horizontal = 3
 
 [node name="TextPanel" type="PanelContainer" parent="MainPanel/HBoxContainer/RightSection"]
 unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_skydi")

@@ -26,6 +26,7 @@ directories/dch_directory={
 "commsman": "res://dialog/characters/commsman.dch"
 }
 directories/dtl_directory={
+"locked1": "res://dialog/timelines/locked1.dtl",
 "test1": "res://dialog/timelines/test1.dtl"
 }
 layout/style_list=["res://dialog/styles/shmupscene.tres"]

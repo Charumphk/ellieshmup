@@ -20,6 +20,6 @@ func _on_body_exited(body):
 func _process(delta: float) -> void:
 	for body in bodies_inside:
 		if sprite.visible:
-			if body.type == "enemy":
-				if body.has_method("take_damage") and body.iframes == .0:
+			if body.is_in_group("enemies"):
+				if body.has_method("take_damage") and "iframes" in body and body.iframes == 0.0:
 					body.take_damage(10, "continuous")
