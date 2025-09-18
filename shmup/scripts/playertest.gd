@@ -4,6 +4,9 @@ extends CharacterBody2D
 @export var speed: float = 400.0
 @export var focus_speed: float = 150.0
 
+#clamp to screen
+@export var screen_margin: float = 32.0
+
 #health info
 @export var max_health: float = 100
 
@@ -60,10 +63,35 @@ func _physics_process(delta:float) -> void:
 		handle_focus_mode()
 		handle_iframes()
 		move_and_slide()
+		clamp_to_screen()
 	
 	#increment timers
 	
 	
+
+#clampinator
+func clamp_to_screen():
+	# get current camera and viewport
+	var camera = get_viewport().get_camera_2d()
+	var viewport_size = get_viewport().get_visible_rect().size
+	
+	var screen_bounds: Rect2
+	
+	if camera:
+		var camera_pos = camera.global_position
+		
+		screen_bounds = Rect2(
+			camera_pos - viewport_size * 0.5,
+			viewport_size
+		)
+	
+	# apply margin
+	screen_bounds = screen_bounds.grow(-screen_margin)
+	
+	# clamp player pos
+	global_position.x = clampf(global_position.x, screen_bounds.position.x, screen_bounds.position.x + screen_bounds.size.x)
+	global_position.y = clampf(global_position.y, screen_bounds.position.y, screen_bounds.position.y + screen_bounds.size.y)
+
 
 func handle_focus_mode():
 	focused = Input.is_action_pressed("ability")

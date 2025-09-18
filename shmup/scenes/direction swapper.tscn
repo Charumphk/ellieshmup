@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7dn4sn6ehkc4"]
+
+[ext_resource type="Script" uid="uid://cma2jw71036y3" path="res://scenes/direction_swapper.gd" id="1_bqgbk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rufd5"]
+
+[node name="DirectionSwapper" type="Area2D"]
+script = ExtResource("1_bqgbk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rufd5")
