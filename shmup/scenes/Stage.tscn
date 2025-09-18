@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://d0giwf0c7slpt"]
+[gd_scene load_steps=12 format=4 uid="uid://d0giwf0c7slpt"]
 
 [ext_resource type="PackedScene" uid="uid://chrmy1227bsr7" path="res://scenes/player.tscn" id="1_b1dnq"]
 [ext_resource type="Script" uid="uid://66pc3jx5hflu" path="res://scripts/camera_scroll.gd" id="1_ieuev"]
@@ -7,13 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bshrxnv025hga" path="res://scenes/ambush_swap.tscn" id="5_ywoxc"]
 [ext_resource type="PackedScene" uid="uid://b0483pskvr1g0" path="res://scenes/enemy_trigger_hover.tscn" id="6_ywoxc"]
 [ext_resource type="PackedScene" uid="uid://bpkxsgyifwqbf" path="res://scenes/dialogue_trigger.tscn" id="7_gldam"]
+[ext_resource type="PackedScene" uid="uid://c7dn4sn6ehkc4" path="res://scenes/direction swapper.tscn" id="9_h4huo"]
 [ext_resource type="AudioStream" uid="uid://donvbpks5cd5t" path="res://audio/ost/FULL METAL DAEMON MURAMASA OST - 13_ Katsu-nin-to.mp3" id="9_l3mx8"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8fwf"]
-size = Vector2(24, 656)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l3mx8"]
-size = Vector2(1152, 18)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a7mf4"]
 texture = ExtResource("4_e0kik")
@@ -176,38 +171,8 @@ texture_filter = 1
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("1_ieuev")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Camera2D"]
-position = Vector2(593, 0)
-collision_layer = 9
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/StaticBody2D"]
-position = Vector2(-5, 0)
-shape = SubResource("RectangleShape2D_q8fwf")
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="Camera2D"]
-position = Vector2(-576, 0)
-collision_layer = 9
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/StaticBody2D2"]
-position = Vector2(-12, 0)
-shape = SubResource("RectangleShape2D_q8fwf")
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="Camera2D"]
-position = Vector2(0, -328)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/StaticBody2D3"]
-position = Vector2(0, -8)
-shape = SubResource("RectangleShape2D_l3mx8")
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="Camera2D"]
-position = Vector2(0, -399.68)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/StaticBody2D4"]
-position = Vector2(0, 735.68)
-shape = SubResource("RectangleShape2D_l3mx8")
-
 [node name="CameraTrigger" parent="." instance=ExtResource("2_a7mf4")]
-collision_layer = 0
+collision_layer = 64
 collision_mask = 0
 
 [node name="player" parent="." instance=ExtResource("1_b1dnq")]
@@ -244,6 +209,7 @@ stream = ExtResource("9_l3mx8")
 
 [node name="ambush_swap2" parent="." instance=ExtResource("5_ywoxc")]
 position = Vector2(3648, -4224)
+post_dir = "up"
 onstart = false
 
 [node name="Marker2D" type="Marker2D" parent="ambush_swap2" groups=["enemy_spawn"]]
@@ -255,3 +221,7 @@ position = Vector2(640, 104)
 [node name="dialogue_trigger2" parent="." instance=ExtResource("7_gldam")]
 position = Vector2(3648, -4224)
 dialogue = "locked1"
+
+[node name="DirectionSwapper" parent="." instance=ExtResource("9_h4huo")]
+position = Vector2(3648, -7360)
+post_dir = "left"
